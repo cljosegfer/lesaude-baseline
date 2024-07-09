@@ -7,17 +7,26 @@ from models.baseline import ResnetBaseline
 
 # model_label = 'code15'
 # epochs = 15
+
 # from runners.multiclass import Runner
 # from dataloaders.code15 import CODE as DS
 # from dataloaders.code15 import CODEsplit as DSsplit
 # model = ResnetBaseline(n_classes = 6)
 
-model_label = 'code15normal'
+# model_label = 'code15normal'
+# epochs = 15
+
+# from dataloaders.code15 import CODE as DS
+# from dataloaders.code15 import CODEsplit as DSsplit
+# from runners.normal import Runner
+# model = ResnetBaseline(n_classes = 1)
+
+model_label = 'code15interferencia'
 epochs = 15
 
 from dataloaders.code15 import CODE as DS
 from dataloaders.code15 import CODEsplit as DSsplit
-from runners.normal import Runner
+from runners.interferencia import Runner
 model = ResnetBaseline(n_classes = 1)
 
 # # init
