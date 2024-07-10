@@ -62,4 +62,5 @@ class CODEsplit(Dataset):
     
     def __getitem__(self, idx):
         return {'x': self.database.hdf5_file[self.tracing_col][self.metadata[self.h5_idx_col].loc[idx]],
-                'y': self.metadata[self.output_col].loc[idx].values}
+                'y': self.metadata[self.output_col].loc[idx].values, 
+                'exam_id': self.metadata[self.exam_id_col].loc[idx]}
