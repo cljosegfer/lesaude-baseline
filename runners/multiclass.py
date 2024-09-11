@@ -10,7 +10,7 @@ from utils import plot_log, export, get_inputs, find_best_thresholds, metrics_ta
 from hparams import BATCH_SIZE, NUM_WORKERS
 
 class Runner():
-    def __init__(self, device, model, database, split, model_label = 'baseline'):
+    def __init__(self, device, model, database, split, model_label = 'baseline', output_col = ['1dAVb', 'RBBB', 'LBBB', 'SB', 'AF', 'ST']):
         self.device = device
         self.model = model
         self.database = database
@@ -18,9 +18,9 @@ class Runner():
         if not os.path.exists('output/{}'.format(model_label)):
             os.makedirs('output/{}'.format(model_label))
         
-        self.trn_ds = split(database, database.trn_metadata)
-        self.val_ds = split(database, database.val_metadata)
-        self.tst_ds = split(database, database.tst_metadata)
+        self.trn_ds = split(database, database.trn_metadata, output_col = output_col)
+        self.val_ds = split(database, database.val_metadata, output_col = output_col)
+        self.tst_ds = split(database, database.tst_metadata, output_col = output_col)
     
     def train(self, epochs):
         self.model = self.model.to(self.device)

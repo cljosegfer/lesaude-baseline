@@ -126,6 +126,6 @@ def metrics_table(all_binary_results, all_true_labels):
 
     return metrics_dict
 
-def json_dump(metrics_dict, model_label):
-    with open('output/{}/metrics.json'.format(model_label), 'w') as f:
-        json.dump(metrics_dict, f)
+def json_dump(metrics_dict, model_label, test = False):
+    with open('output/{}/metrics{suffix}.json'.format(model_label, suffix = '_test' if test else ''), 'w') as f:
+        json.dump(metrics_dict, f, indent = 2)
